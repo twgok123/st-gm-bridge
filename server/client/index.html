@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ST-GM-Bridge Client</title>
+    <link rel="stylesheet" href="client.css">
+</head>
+<body>
+    <div id="auth-overlay" class="auth-overlay">
+        <section class="auth-modal" aria-labelledby="auth-title">
+            <div class="auth-tabs" role="tablist">
+                <button id="register-tab" class="auth-tab active" type="button" role="tab" aria-selected="true">Register</button>
+                <button id="login-tab" class="auth-tab" type="button" role="tab" aria-selected="false">Login</button>
+            </div>
+            <h1 id="auth-title">Register</h1>
+            <div class="auth-controls">
+                <input id="auth-username" type="text" autocomplete="username" placeholder="Username">
+                <input id="auth-password" type="password" autocomplete="current-password" placeholder="Password">
+                <button id="auth-submit-button" type="button">Register</button>
+            </div>
+            <div id="auth-status" class="auth-status">Register or log in to join the session.</div>
+        </section>
+    </div>
+
+    <header id="player-header" class="player-header hidden">
+        <div class="player-welcome" id="player-welcome">Welcome</div>
+        <div class="display-name-control">
+            <label for="display-name-input">Display Name</label>
+            <input id="display-name-input" type="text" disabled>
+            <button id="display-name-button" type="button">Edit</button>
+            <button id="logout-button" type="button">Logout</button>
+        </div>
+        <section class="player-list" aria-label="Players in Session">
+            <h2>Players in Session</h2>
+            <ul>
+                <li><span class="status-dot online"></span> GM Host</li>
+                <li><span class="status-dot online"></span> Player One</li>
+                <li><span class="status-dot offline"></span> Player Two</li>
+            </ul>
+        </section>
+    </header>
+
+    <main class="client-shell">
+        <section class="chat-panel ic-panel">
+            <h1>In-Character Chat</h1>
+            <div class="panel-body">
+                <div class="panel-placeholder panel-messages">Player roleplay messages will appear here.</div>
+                <div class="panel-input-row">
+                    <input type="text" placeholder="In-character message">
+                    <button type="button">Send</button>
+                </div>
+            </div>
+        </section>
+
+        <input id="ooc-panel-toggle" class="panel-collapse-toggle" type="checkbox" checked>
+        <section class="chat-panel ooc-panel collapsible-panel">
+            <label class="panel-collapse-button" for="ooc-panel-toggle">OOC Chat</label>
+            <h1>OOC Chat</h1>
+            <div class="panel-body">
+                <div class="panel-placeholder panel-messages">Out-of-character messages will appear here.</div>
+                <div class="panel-input-row">
+                    <input type="text" placeholder="OOC message">
+                    <button type="button">Send</button>
+                </div>
+            </div>
+        </section>
+
+        <input id="rpg-panel-toggle" class="panel-collapse-toggle" type="checkbox" checked>
+        <aside class="rpg-panel collapsible-panel">
+            <label class="panel-collapse-button" for="rpg-panel-toggle">RPG Companion Tracker</label>
+            <h1>RPG Companion Tracker</h1>
+            <div class="panel-body">
+                <div class="panel-placeholder panel-messages">Tracker details will appear here later.</div>
+            </div>
+        </aside>
+    </main>
+    <script src="client.js"></script>
+</body>
+</html>
