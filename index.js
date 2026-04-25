@@ -2,6 +2,8 @@ const extensionName = 'st-gm-bridge';
 const extensionFolderPath = 'scripts/extensions/third-party/st-gm-bridge';
 const pluginServerUrl = 'http://localhost:8090';
 
+let gmDisplayName = '';
+
 async function loadSessionConfig() {
     const response = await fetch(`${pluginServerUrl}/session/config`);
     const config = await response.json();
@@ -37,6 +39,19 @@ jQuery(async () => {
         const settingsHtml = await $.get(`${extensionFolderPath}/settings.html`);
         $('#extensions_settings2').append(settingsHtml);
         $(document).on('click', '#rpg-save-btn', saveSessionConfig);
+        $(document).on('click', '#gm-display-name-save', () => {
+            const name = $('#gm-display-name-input').val().trim();
+            gmDisplayName = name;
+            console.log('GM display name set:', gmDisplayName);
+        });
+        $(document).on('click', '#gm-ooc-send', () => {
+            const message = $('#gm-ooc-input').val().trim();
+            if (message) {
+                console.log('GM OOC message:', message);
+                $('#gm-ooc-input').val('');
+                // TODO: WebSocket broadcast to connected players
+            }
+        });
         await loadSessionConfig();
         console.log(`[${extensionName}] Loaded successfully`);
     } catch (error) {

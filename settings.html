@@ -1,4 +1,77 @@
 <div class="st-gm-bridge-settings">
+    <style>
+        .gm-panel {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #444;
+        }
+        .gm-panel-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .gm-badge-icon {
+            font-size: 18px;
+        }
+        .gm-badge-label {
+            font-weight: bold;
+            color: #ffd700;
+        }
+        .gm-display-name-control,
+        .gm-ooc-input-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .gm-display-name-control input {
+            flex: 1;
+            border: 1px solid #555;
+            border-radius: 6px;
+            padding: 6px 8px;
+            background: #111;
+            color: #eee;
+        }
+        .gm-ooc-section h3,
+        .gm-player-list-section h3 {
+            margin: 0 0 8px;
+            font-size: 14px;
+            color: #bbb;
+        }
+        .gm-ooc-messages {
+            height: 150px;
+            overflow-y: auto;
+            border: 1px solid #444;
+            border-radius: 6px;
+            background: #111;
+            padding: 8px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #ccc;
+        }
+        .gm-ooc-messages .gm-ooc-msg {
+            margin-bottom: 4px;
+            padding: 4px;
+            border-bottom: 1px solid #333;
+        }
+        .gm-ooc-messages .gm-ooc-msg:last-child {
+            border-bottom: none;
+        }
+        #gm-player-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            color: #bbb;
+            font-size: 13px;
+        }
+        #gm-player-list li {
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+    </style>
     <div class="inline-drawer">
         <div class="inline-drawer-toggle inline-drawer-header">
             <b>ST-GM-Bridge</b>
@@ -14,6 +87,34 @@
             <div>
                 <button id="rpg-save-btn" class="menu_button" type="button">Save RPG Setting</button>
                 <span id="rpg-save-status"></span>
+            </div>
+            <hr>
+            <div class="gm-panel">
+                <div class="gm-panel-header">
+                    <span class="gm-badge-icon">👑</span>
+                    <span class="gm-badge-label">Game Master</span>
+                </div>
+                <div class="gm-display-name-control">
+                    <label for="gm-display-name-input">GM Display Name</label>
+                    <input id="gm-display-name-input" type="text" placeholder="Enter GM name">
+                    <button id="gm-display-name-save" class="menu_button" type="button">Save</button>
+                </div>
+                <div class="gm-ooc-section">
+                    <h3>OOC Messages</h3>
+                    <div id="gm-ooc-messages" class="gm-ooc-messages"></div>
+                    <div class="gm-ooc-input-row">
+                        <input id="gm-ooc-input" type="text" placeholder="OOC message to players">
+                        <button id="gm-ooc-send" class="menu_button" type="button">Send</button>
+                    </div>
+                </div>
+                <div class="gm-player-list-section">
+                    <h3>Player List</h3>
+                    <ul id="gm-player-list">
+                        <li><span class="status-dot online"></span> GM Host</li>
+                        <li><span class="status-dot online"></span> Player One</li>
+                        <li><span class="status-dot offline"></span> Player Two</li>
+                    </ul>
+                </div>
             </div>
             <a class="menu_button" href="http://localhost:8090" target="_blank" rel="noopener noreferrer">Open Client Page</a>
         </div>
